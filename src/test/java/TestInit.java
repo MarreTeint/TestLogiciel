@@ -7,8 +7,6 @@ public class TestInit {
 
 	private Conteneur C;
 
-	@Rule
-	public ExpectedException exceptionRule = ExpectedException.none();
 	@Test
 	public void testTransition() throws ErreurConteneur {
 		C = new Conteneur(5);
@@ -19,9 +17,8 @@ public class TestInit {
 			fail("La capacité du conteneur n'est pas correcte");
 		}
 	}
-	@Test
+	@Test(expected=ErreurConteneur.class)
 	public void testTransitionVide() throws ErreurConteneur {
-		exceptionRule.expect(ErreurConteneur.class);
 		C = new Conteneur(-5);
 	}
 

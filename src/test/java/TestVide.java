@@ -12,8 +12,6 @@ public class TestVide {
 		C = new Conteneur(5);
 	}
 
-	@Rule
-	public ExpectedException exceptionRule = ExpectedException.none();
 	@Test
 	public void testTransition() throws ErreurConteneur {
 		C.ajouter(2,2);
@@ -27,9 +25,8 @@ public class TestVide {
 		C.retirer(2);
 	}
 
-	@Test
+	@Test(expected=ErreurConteneur.class)
 	public void testGetValeurNull() throws ErreurConteneur {
-		exceptionRule.expect(ErreurConteneur.class);
 		C.valeur(2);
 	}
 
