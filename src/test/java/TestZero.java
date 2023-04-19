@@ -1,6 +1,7 @@
 import org.junit.*;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class TestZero {
     Systeme sys;
@@ -67,8 +68,12 @@ public class TestZero {
     }
 
     @Test
-    public void testTransition() throws ErreurSysteme {
-        sys.add(p1);
+    public void testTransition() {
+        try{
+            sys.add(p1);
+        }catch (ErreurSysteme e){
+            fail("ErreurSysteme inattendue");
+        }
         assertTrue(sys.getWaiting().isEmpty());
         assertTrue(sys.isCurrent(p1));
     }

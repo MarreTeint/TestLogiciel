@@ -1,7 +1,6 @@
 import org.junit.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class TestThree {
 
@@ -71,6 +70,36 @@ public class TestThree {
     public void testFalseAdd2Bis() {
         try {
             sys.add(new Processus(""));
+        } catch (ErreurSysteme e) {
+            assertTrue(sys.isCurrent(current));
+            assertTrue(sys.isLast(last));
+            assertTrue(sys.getWaiting().contains(last));
+            assertTrue(sys.getWaiting().contains(p3));
+            assertEquals(sys.getWaiting().size(), 2);
+        }
+    }
+
+    @Test
+    public void testAdd(){
+        try {
+            sys.add(p4);
+            assertTrue(sys.isCurrent(current));
+            assertTrue(sys.isLast(last));
+            assertTrue(sys.getWaiting().contains(p4));
+        }catch (ErreurSysteme e){
+            fail();
+        }
+    }
+
+    @Test(expected = ErreurSysteme.class)
+    public void testExistingAdd() throws ErreurSysteme {
+        sys.add(p3);
+    }
+
+    @Test
+    public void testExistingAddBis() {
+        try {
+            sys.add(p3);
         } catch (ErreurSysteme e) {
             assertTrue(sys.isCurrent(current));
             assertTrue(sys.isLast(last));
