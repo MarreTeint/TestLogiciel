@@ -76,5 +76,6 @@ public class TestZero {
         }
         assertTrue(sys.getWaiting().isEmpty());
         assertTrue(sys.isCurrent(p1));
+        assertTrue(sys.isLast(null));
     }
 }

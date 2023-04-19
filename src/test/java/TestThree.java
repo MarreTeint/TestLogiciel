@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 public class TestThree {
 
     Systeme sys;
-    Processus p1, p2, p3, p4, p5, last, current;
+    Processus p1, p2, p3, p4, last, current;
 
     @Before
     public void setUp() throws ErreurSysteme {
@@ -14,7 +14,6 @@ public class TestThree {
         p2 = new Processus("p2");
         p3 = new Processus("p3");
         p4 = new Processus("p4");
-        p5 = new Processus("p5");
         sys.init();
         sys.add(p1);
         sys.add(p2);
@@ -92,8 +91,18 @@ public class TestThree {
     }
 
     @Test(expected = ErreurSysteme.class)
-    public void testExistingAdd() throws ErreurSysteme {
+    public void testExistingWaitingAdd() throws ErreurSysteme {
         sys.add(p3);
+    }
+
+    @Test(expected = ErreurSysteme.class)
+    public void testExistingCurrentAdd() throws ErreurSysteme {
+        sys.add(current);
+    }
+
+    @Test(expected = ErreurSysteme.class)
+    public void testExistingCurrentAdd2() throws ErreurSysteme {
+        sys.add(new Processus("p1"));
     }
 
     @Test
