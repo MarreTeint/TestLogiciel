@@ -44,6 +44,8 @@ public class TestOne {
         assertFalse(p1.equals(i));
     }
 
+
+
     @Test
     public void testOneBis() throws ErreurSysteme {
         // L'état initial est l'objet d'autres tests.

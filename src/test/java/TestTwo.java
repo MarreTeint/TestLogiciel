@@ -183,9 +183,24 @@ public class TestTwo {
         assertTrue(sys.getWaiting().contains(p2));
         assertFalse(sys.getWaiting().contains(p1));
         assertEquals(sys.getWaiting().size(),1);
+    }
 
-
-
+    @Test
+    public void testTwoHuit() throws ErreurSysteme {
+        // L'état initial est l'objet d'autres tests.
+        // Ici on suppose donc qu'au démarrage d'une méthode
+        // de test on est bien ans l'état initial.
+        sys.add(p1); // ne doit pas lever l'exception
+        try {
+            sys.add(p2); // ne doit pas lever l'exception
+        } catch (ErreurSysteme e) {
+            fail();
+        }
+        try {
+            sys.add(p1);
+            sys.add(new Processus("p2"));
+            fail();// ne doit pas lever l'exception
+        } catch (ErreurSysteme e) {}
 
     }
 }

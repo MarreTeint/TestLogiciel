@@ -32,6 +32,9 @@ public class TestThree {
         assertTrue(sys.getWaiting().contains(p2));
     }
 
+
+
+
     @Test
     public void testDoubleSwap() throws ErreurSysteme {
         sys.swap();
