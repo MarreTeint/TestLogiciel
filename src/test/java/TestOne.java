@@ -21,6 +21,10 @@ public class TestOne {
         sys.init();
     }
 
+    @Test(expected = ErreurSysteme.class)
+    public void testNullProcessus() throws ErreurSysteme {
+        Processus p3 = new Processus(null);
+    }
 
     @Test public void testOne() throws ErreurSysteme {
         sys.add(p1);
@@ -29,6 +33,16 @@ public class TestOne {
         assertTrue(sys.isLast(null));
     }
 
+    @Test
+    public void testNameProcessus(){
+        assertEquals("p1", p1.name());
+    }
+
+    @Test
+    public void testEqualsProcessusNotSameObject(){
+        Object i = Integer.valueOf(42);
+        assertFalse(p1.equals(i));
+    }
 
     @Test
     public void testOneBis() throws ErreurSysteme {
